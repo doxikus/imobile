@@ -1,0 +1,15 @@
+<div data-role="header" data-position="inline" data-theme="c">
+<h1><a href="<?php echo $this->getUrl('') ?>" data-icon="home">
+<img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+</a></h1>
+
+
+
+<?php echo $this->getChildhtml('top-user');?>
+
+    <?php //echo $this->getChildHtml('store_language') ?>
+    <?php //echo $this->getChildHtml('accountLinks') ?>
+    <?php //echo $this->getChildHtml('topLinks') ?>
+</div>
+<?php echo $this->getChildhtml('top-cart');?>
+

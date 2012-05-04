@@ -1,0 +1,69 @@
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+
+            <div class="ui-bar ui-bar-b">
+            <p class="amount">
+            <?php if($this->getLastPageNum()>1): ?>
+            <?php echo $this->__('Items %s to %s of %s total', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+            <?php else: ?>
+            <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+            <?php endif; ?>
+            </p>
+            </div> 
+
+
+    
+            
+            <fieldset data-role="controlgroup">             
+            <label for="sorting" class="select"><?php echo $this->__('Sort By') ?></label>
+            <select name="sorting" onchange="setLocation(this.value)" data-native-menu="false" data-icon="arrow-d" data-theme="e">
+            <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+                <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                    <?php echo $this->__($_order) ?>
+                </option>
+            <?php endforeach; ?>
+            </select>
+            
+            </fieldset>
+            
+
+    
+    <?php endif; ?>
+        
+        <?php echo $this->getPagerHtml() ?>
+
+<!--        --><?php //if($this->getCurrentDirection() == 'desc'): ?>
+<!--        <a href="--><?php //echo $this->getOrderUrl(null, 'asc') ?><!--" title="--><?php //echo $this->__('Set Ascending Direction') ?><!--">ASC</a>-->
+<!--        --><?php //else: ?>
+<!--        <a href="--><?php //echo $this->getOrderUrl(null, 'desc') ?><!--" title="--><?php //echo $this->__('Set Descending Direction') ?><!--">DSC</a>-->
+<!--        --><?php //endif; ?>
+    
+    
+
+    <?php if( $this->isExpanded() ): ?>
+    <div class="sorter">
+        <?php if( $this->isEnabledViewSwitcher() ): ?>
+        <p class="view-mode">
+            <?php $_modes = $this->getModes(); ?>
+            <?php if($_modes && count($_modes)>1): ?>
+            <label><?php echo $this->__('View as') ?>:</label>
+            <?php foreach ($this->getModes() as $_code=>$_label): ?>
+                <?php if($this->isModeActive($_code)): ?>
+                    <strong title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></strong>&nbsp;
+                <?php else: ?>
+                    <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></a>&nbsp;
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php endif; ?>
+        </p>
+        <?php endif; ?>
+    
+        
+</div>
+<?php endif ?>

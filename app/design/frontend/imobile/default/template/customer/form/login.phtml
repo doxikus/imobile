@@ -1,0 +1,33 @@
+<div class="account-login">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="login-form">
+        <div class="registered-users">
+            <h1><?php echo $this->__('Registered Customers') ?></h1>
+            <ul class="form-list" data-inset="true" data-role="listview">
+                <li>
+                    <label for="email" class="required"><?php echo $this->__('Email Address') ?></label>
+                    <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="email" class="input-text required-entry validate-email" title="<?php echo $this->__('Email Address') ?>" />
+                </li>
+                <li>
+                    <label for="pass" class="required"><?php echo $this->__('Password') ?></label>
+                    <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+                </li>
+            </ul>
+            <div class="buttons-set">
+                <a href="<?php echo $this->getForgotPasswordUrl() ?>"><?php echo $this->__('Forgot Your Password?') ?></a>
+                <button type="submit" class="button" title="<?php echo $this->__('Login') ?>" name="send" id="send2"><?php echo $this->__('Login') ?></button>
+            </div>
+        </div>
+        <div class="new-users">
+            <h1><?php echo $this->__('New Customers') ?></h1>
+            <div class="buttons-set">
+                <button type="button" title="<?php echo $this->__('Create an Account') ?>" class="button" onclick="window.location='<?php echo $this->getCreateAccountUrl() ?>';"><?php echo $this->__('Create an Account') ?></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('login-form', true);
+    //]]>
+    </script>
+</div>

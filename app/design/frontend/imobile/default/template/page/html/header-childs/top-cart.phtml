@@ -1,0 +1,23 @@
+<?php
+// Variables for Shopping cart
+// $cart = Mage::helper('checkout/cart')->getItemsCount();
+$totalNumOfCartItem = Mage::helper('checkout/cart')->getCart()->getItemsCount();
+
+$totalPrices = Mage::helper('checkout/cart')->getCart()->getQuote()->getTotals();
+
+$subtotalPrice = $totalPrices['subtotal'];
+$subtotalPrice = $subtotalPrice->getData('value');
+
+$grandTotal = $totalPrices['grand_total'];
+$grandTotal = $grandTotal->getData('value');
+?>
+
+<ul data-role="listview">
+<li class="cart_item">
+<a href="<?php echo $this->getUrl('checkout/cart');?>"> Shopping cart
+    <?php echo Mage::helper('checkout/cart')->getCart()->getItemsQty() ;?> Items
+    <span class="ui-li-count">Total: <?php echo $this->helper('checkout')->formatPrice(Mage::getSingleton('checkout/cart')->getQuote()->getGrandTotal()) ?></span>
+</a>
+</li>
+</ul>
+

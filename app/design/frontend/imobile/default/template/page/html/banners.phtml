@@ -1,0 +1,8 @@
+<div id='slider' class='swipe'>
+    <div>
+    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('slider')->toHtml(); ?>
+    </div>
+</div>
+<script>
+    var slider = new Swipe(document.getElementById('slider'));
+</script>

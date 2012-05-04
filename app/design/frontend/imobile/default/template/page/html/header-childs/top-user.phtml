@@ -1,0 +1,29 @@
+<?php
+$session = Mage::getSingleton('customer/session');
+$customer = $session->getCustomer();
+?>
+<div data-role="navbar">
+<ul>
+
+<?php if (!$session->isLoggedIn()):?>
+<li>
+<a href="<?php echo $this->getUrl('customer/account/login') ?>" rel="nofollow" title="<?php echo $this->__('Login') ?>"><?php echo $this->__( 'Login') ?></a>
+</li>
+<li>
+<a href="<?php echo $this->getUrl('customer/account/create') ?>" rel="nofollow" title="<?php echo $this->__('Create Account') ?>"><?php echo $this->__( 'Register') ?></a>
+</li>
+<?php else:?>
+
+
+<li><a href="<?php echo $this->getUrl('customer/account') ?>" rel="nofollow" title="<?php echo $customer->firstname.'&nbsp;'.$customer->lastname ?>"><?php echo $this->__( 'My Account') ?></a></li>
+<li><a href="<?php echo $this->getUrl('customer/account/logout') ?>" rel="nofollow" title="<?php echo $this->__('Logout') ?>"><?php echo $this->__( 'Logout') ?></a></li>
+
+<?php endif;?>
+</ul>
+</div>
+
+
+
+<!--<ul>-->
+<!--<li><a href="--><?php //echo $this->$home_url = Mage::helper('core/url')->getHomeUrl(); ?><!--/customer/account/">My Account</a></li>-->
+<!--</ul>               -->
